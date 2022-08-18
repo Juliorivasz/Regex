@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const text = '11a22b33c';
+
+        // const expression = new RegExp('(\\d\\d\\w)', 'g');
+
+        const expression = /(\d\d)(\w)/g;
+
+        console.log(expression.test(text));
+
+        expression.lastIndex = 0;
+
+        while((result = expression.exec(text))){
+            console.log(result);
+        }
+        
+    </script>
+    <script>
+        var añoMesDia = '2007-12-31';
+
+        var exp = /-/g;
+
+        añoMesDia = añoMesDia.replace(exp, '/');
+
+        console.log(añoMesDia);
+        // ¡Perfecto! Pero ojo, si te olvidas de poner el g en la expresión, será cambiado solamente el primer guión.
+    </script>
+
+    <script>
+        var arquivo = '100,200-150,200;20';
+
+        var valores = arquivo.split(',');
+        console.log(valores);
+
+        var exp = /[,;-]/;
+        
+        var valores = arquivo.split(exp);
+
+        console.log(valores);
+
+    </script>
+    <script>
+        var codigos = 'A121B12112C12212F12G01';
+
+        var exp = /[A-Za-z]\d+/g
+
+        //¿Y ahora? ¿Cómo extraer para un arreglo quien sigue ese patrón? Toda string en JavaScript posee el método match. 
+        //Este método acepta una expresión regular y regresa un arreglo con todas las partes del blanco que atienden la expresión regular. Usando match:
+
+        var codigosExtraidos = codigos.match(exp);
+
+        console.log(codigosExtraidos);
+    </script>
+</body>
+</html>
